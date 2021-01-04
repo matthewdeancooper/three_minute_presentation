@@ -2,54 +2,60 @@
 ** Title (15s)
    - The title of this presentation is 'A clinical implementation of deep
      learning: Automatic contouring via U-Net architecture'.
-   - This project was completed in collaborating with Riverina Cancer Care
-     Centre and the Small Animal Specialist Hospital.
 
 ** Motivation (1m)
 *** Need
-   - The TG-275 risk assessment highlights multiple human failure modes
-     in RT with the 1st and 7th highest ranked hazards relating directly to
-     contouring.
-   - Accurate contouring is critical to the efficacy of RT, and as medical
-     physicists we have a responsibility to mitigate these risks.
-   - The literature highlights improved time and accuracy in DL methods cf.
-     atlas techniques, providing a potential solution.
+   - The TG-275 risk assessment highlights multiple human failure modes in RT
+     with the 1st and 7th most prominent risks relating directly to contour
+     generation
+
+   - Accurate contouring is a critical aspect of safe and effective treatment
+     delivery in RT, and as medical physicists we have a responsibility to
+     mitigate these risks.
+
+   - DL methods are a potential solution as they have shown improved performance
+     cf. atlas based techniques both in terms of accuracy and contouring time.
 *** Aim
-   - This study designed and evaluated a custom 2D U-Net architecture with 2
+   - This study designed and evaluated a 2D U-Net architecture with 2
      primary aims
+
      1) Develop a prostate cancer QA tool that compares expert contours with
-        model predictions for independent validation.
-     2) Automate vacuum bag segmentation, a time consuming aspect of
-        canine RT and an application that could be implemented clinically to
-        serve as a framework for other organs.
+        model predictions in order to provide an independent validation.
+
+     2) Automate vacuum bag segmentation for canine RT, a time consuming process
+        and an application that could be deployed to clinic as a framework for
+        other organs.
 
 
 
 ** Method (1m)
 *** Performance
-   - Clinically, a challenge remains in objectively assessing
-     generated contours in respect to the degree of manual correction required.
+   - However, a challenge remains in objectively assessing the degree of
+     correction required for generated contours
+
    - Typical volumetric overlap scores such as the volumetric dice coefficient
      are good measures for geometric similarity, however, correlate weakly with
      both clinical acceptability and correction times.
+
    - In addition to reporting volumetric overlap, this study implemented the
      surface dice coefficient, a recent technique that indicated improved
      correlation with correction times in the literature.
+
    - It assesses performance by taking into account an organ specific tolerance
      representative of inter-observer variance, and quantifies the fraction of
      surface points that are within this tolerance, and theoretically the
-     fraction of surfaces that require no manual correction prior to acceptance
+     fraction of surface points that do not require manual correction.
 
 
 ** Results (1m)
 *** Pelvic imaging (40s)
-   - For the prostate model we contoured patient, bladder and rectum regions,
+   - For the prostate QA model we contoured patient, bladder and rectum regions,
      and achieved surface dice scores of over 90%, however, volumetric scores
      were below those achieved by human experts.
 
-   - This correlates with low manual correction times and hence utility as a
+   - This should correlate with low correction times and hence has utility as a
      starting reference, however, higher volumetric agreement would be required
-     for utility as a QA tool.
+     for use as a QA tool.
 
    - Future work will focus on increasing the size of our training data set to
      improve bladder segmentation, and moving from a 2D to a 3D model input to
@@ -57,7 +63,10 @@
 
 *** Canine imaging (20s)
    - Results for the canine vacuum bag model indicated clinical contours, and
-     was successfully deployed under a prototype warning. Acceptance testing has
-     shown a performance improvement of 30 minutes per patient and a maximum
-     dose shift of < 0.03% at a depth of 10cm with an open 10 by 10 field. This
-     model is currently being used on all new canine RT patient.
+     was successfully deployed under a prototype warning.
+
+   - Acceptance testing has shown a performance improvement of 30 minutes per
+     patient and a maximum dose shift of < 0.03% at a depth of 10cm with an open
+     10 by 10 field.
+
+   - This model is currently being used on all new canine RT patient.
